@@ -11,9 +11,10 @@
 #include <atomic>
 #include <filesystem>
 #include <boost/locale.hpp>
-#include "config/Config.h"
 
 namespace fs = std::filesystem;
+
+namespace line_counter {
 
 /**
  * @brief A class to count the total number of lines in all files in a given directory.
@@ -25,42 +26,13 @@ public:
      * 
      * @param directory The directory to scan for files.
      */
-    explicit LineCounter(const fs::path& directory);
-    
-    /**
-     * @brief Destructor for the LineCounter object.
-     */
-    ~LineCounter();
-    
-    /**
-     * @brief Copy constructor.
-     * 
-     * @param other The LineCounter object to copy from.
-     */
-    LineCounter(const LineCounter& other);
-    
-    /**
-     * @brief Move constructor.
-     * 
-     * @param other The LineCounter object to move from.
-     */
-    LineCounter(LineCounter&& other) noexcept;
-    
-    /**
-     * @brief Copy assignment operator.
-     * 
-     * @param other The LineCounter object to copy from.
-     * @return A reference to the LineCounter object.
-     */
-    LineCounter& operator=(const LineCounter& other);
-    
-    /**
-     * @brief Move assignment operator.
-     * 
-     * @param other The LineCounter object to move from.
-     * @return A reference to the LineCounter object.
-     */
-    LineCounter& operator=(LineCounter&& other) noexcept;
+    LineCounter(const fs::path& directory);
+
+    ~LineCounter() = default;
+    LineCounter(LineCounter const&) = delete;
+    LineCounter& operator=(LineCounter const&) & = delete;
+    LineCounter(LineCounter&&) = delete;
+    LineCounter& operator=(LineCounter&&) & = delete;
     
     /**
      * @brief Counts the total number of lines in all files in the directory.
@@ -83,9 +55,11 @@ private:
     void CountLinesInFile(const fs::path& file_path);
 
 private:
-    fs::path m_directory; ///< The directory to scan for files.
-    std::atomic<int> m_total_lines; ///< The total number of lines counted.
-    std::vector<std::thread> m_threads; ///< Vector to store threads for parallel processing.
+    fs::path directory_; ///< The directory to scan for files.
+    std::atomic<int> total_lines_; ///< The total number of lines counted.
+    std::vector<std::thread> threads_; ///< Vector to store threads for parallel processing.
 };
+
+} // namespace line_counter
 
 #endif // LINE_COUNTER_H

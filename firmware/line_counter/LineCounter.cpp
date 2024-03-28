@@ -1,10 +1,8 @@
 #include "LineCounter.h"
+#include "print/Print.h"
+#include "configuration/Configuration.h"
 
-#ifdef k_debug_prints
-#define DEBUG_PRINT(x) if (k_debug_prints) std::cout << x << std::endl
-#else
-#define DEBUG_PRINT(x)
-#endif
+namespace line_counter {
 
 LineCounter::LineCounter(const fs::path& directory) : m_directory(directory), m_total_lines(0) {}
 
@@ -97,3 +95,5 @@ void LineCounter::CountLines() {
 int LineCounter::GetTotalLines() const {
     return m_total_lines;
 }
+
+} // namespace line_counter
