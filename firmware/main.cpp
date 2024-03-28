@@ -1,6 +1,6 @@
-// main.cpp
-#include "LineCounter.h"
-#include "Error.h"
+#include "line_counter/LineCounter.h"
+#include "error/Error.h"
+#include "config/Config.h"
 
 /**
  * @brief The entry point of the program.

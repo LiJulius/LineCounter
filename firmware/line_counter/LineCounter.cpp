@@ -1,5 +1,4 @@
-// line_counter.cpp
-#include "line_counter.h"
+#include "LineCounter.h"
 
 #ifdef k_debug_prints
 #define DEBUG_PRINT(x) if (k_debug_prints) std::cout << x << std::endl

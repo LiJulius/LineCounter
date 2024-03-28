@@ -11,7 +11,7 @@
 #include <atomic>
 #include <filesystem>
 #include <boost/locale.hpp>
-#include "config.h"
+#include "config/Config.h"
 
 namespace fs = std::filesystem;
 
