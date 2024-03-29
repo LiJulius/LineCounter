@@ -14,7 +14,7 @@
     if(configuration::kIsErrorPrintsEnabled) { \
         std::stringstream errorStream; \
         errorStream << "ERROR: File: " << __FILE__ << ", Line: " << __LINE__ << ", Error: " << error; \
-        PRINT(errorStream.str()); \
+        PRINT_ERROR(errorStream.str()); \
     }
 
 namespace error {

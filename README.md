@@ -11,5 +11,6 @@
         1. C:\Boost\lib
         2. C:\Boost\include\boost-1_84
 2. CMake build system installed
+3. Windows SDK https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/
 
 

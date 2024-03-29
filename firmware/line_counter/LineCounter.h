@@ -2,6 +2,9 @@
 #ifndef LINE_COUNTER_H
 #define LINE_COUNTER_H
 
+
+#include "error/Error.h"
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -28,7 +31,7 @@ public:
      */
     LineCounter(const fs::path& directory);
 
-    ~LineCounter() = default;
+    ~LineCounter();
     LineCounter(LineCounter const&) = delete;
     LineCounter& operator=(LineCounter const&) & = delete;
     LineCounter(LineCounter&&) = delete;
@@ -36,15 +39,15 @@ public:
     
     /**
      * @brief Counts the total number of lines in all files in the directory.
+     * @return Error code
      */
-    void CountLines();
+    error::ErrorCodes CountLines();
     
     /**
      * @brief Gets the total number of lines counted.
-     * 
      * @return The total number of lines.
      */
-    int GetTotalLines() const;
+    uint32_t GetTotalLines() const;
 
 private:
     /**
@@ -56,8 +59,14 @@ private:
 
 private:
     fs::path directory_; ///< The directory to scan for files.
-    std::atomic<int> total_lines_; ///< The total number of lines counted.
+    std::atomic<uint32_t> total_lines_; ///< The total number of lines counted.
     std::vector<std::thread> threads_; ///< Vector to store threads for parallel processing.
+
+    /**
+     * @brief Checks parameter encoding
+     * @return Encoding type
+     */
+    std::string DetectEncoding(const fs::path& file_path) const;
 };
 
 } // namespace line_counter

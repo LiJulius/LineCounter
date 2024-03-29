@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 
+namespace fs = std::filesystem;
+
 /**
  * @brief The entry point of the program.
  * @return An integer representing the exit status.
@@ -44,16 +46,16 @@ int main() {
         }
 
         // Create line counter object
-        line_counter::LineCounter counter(fs::path(folder_path));
+        line_counter::LineCounter counter(folder_path);
 
         // Count lines in folder
         error = counter.CountLines();
 
         // If any error occured, break
-        if (error) {
+        if (error != error::ErrorCodes::kNoError) {
             break;
-        } esle {
-            PRINT("Total lines in all files: " + std::to_string(counter.GetTotalLines()))
+        } else {
+            PRINT("Total lines in all files: " + std::to_string(counter.GetTotalLines()));
         }
 
     }

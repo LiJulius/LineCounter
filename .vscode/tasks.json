@@ -7,9 +7,9 @@
             "command": "cmake",
             "args": [
                 "-S",
-                "${workspaceFolder}/firmware", // Path to the directory containing CMakeLists.txt
+                "${workspaceFolder}/firmware", /* Path to the directory containing CMakeLists.txt */
                 "-B",
-                "${workspaceFolder}/build"     // Path to the build directory
+                "${workspaceFolder}/build"     /* Path to the build directory */
             ],
             "group": {
                 "kind": "build",

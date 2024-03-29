@@ -10,7 +10,7 @@ namespace configuration {
             DEBUG_PRINT("Maximum alloved CPU cores:" + std::to_string(configuration::kMaxCpuCoresUsed));
         }
 
-        DEBUG_PRINT("Max alloved memory usage: " + std::to_string(configuration::kMaxMemoryUsageMb) + " MB");
+        DEBUG_PRINT("Max alloved memory usage: " + std::to_string(configuration::kMaxMemoryUsage / 1024U / 1024U) + " MB");
     
         PrintParameterAndState("UTF8 encoding checking:", kIsUtf8EncodingCheckEnabled);
         PrintParameterAndState("Fault tolerant:", kIsFaultTolerantEnabled);

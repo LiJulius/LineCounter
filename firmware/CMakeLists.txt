@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(LineCounter)
 
 # Set C++ standard
@@ -9,4 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(SOURCES
     main.cpp
     line_counter/LineCounter.cpp
+    configuration/Configuration.cpp
 )
+
+add_executable(LineCounter ${SOURCES})

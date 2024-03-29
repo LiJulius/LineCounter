@@ -7,8 +7,8 @@
 
 namespace configuration {
 
-// Maximum memory usage allowed in MB
-static constexpr uint32_t kMaxMemoryUsageMb {128U};
+// Maximum memory usage allowed in bytes
+static constexpr uint32_t kMaxMemoryUsage {128U * 1024U * 1024U};
 
 // Utilize all CPU cores. Set to 0 if max available cpu can be utilized
 static constexpr uint32_t kMaxCpuCoresUsed {0U};
